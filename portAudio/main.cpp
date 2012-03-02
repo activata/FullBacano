@@ -67,7 +67,6 @@ int getAudioDeviceInfo(){
 void initAudio(int audioInDev, int audioOutDev, int sampleRate, int bufferLength){
    PaError err;
 
-   PaJack_SetClientName(jackName);
 
    err = Pa_Initialize();
    if(err!= paNoError){
@@ -111,6 +110,7 @@ int main(){
    //crear instancia del FullBacanoDSP
    dsp = new FullBacanoDSP();
 
+   PaJack_SetClientName(jackName);
    getAudioDeviceInfo();
    // Harcoding audio devices asi: input=12 output=12
    initAudio(7,7,48000,256);

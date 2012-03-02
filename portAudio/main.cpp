@@ -6,6 +6,7 @@
 #include <portaudio.h>
 #include <pa_jack.h>
 #include "fullBacanoDSP.h"
+using namespace std;
 
 char jackName[] = "Full Bacano";
 
@@ -112,8 +113,15 @@ int main(){
 
    PaJack_SetClientName(jackName);
    getAudioDeviceInfo();
-   // Harcoding audio devices asi: input=12 output=12
-   initAudio(7,7,48000,256);
+
+   int inputDevice, outputDevice;
+   //reading device from standard input
+   cout << "Choose your input device:" << endl;
+   cin >> inputDevice;
+   cout << "Choose your output device: " << endl;
+   cin >> outputDevice;
+   //initAudio(7,7,48000,256);
+   initAudio(inputDevice,outputDevice,48000,256);
 
    while(1){
       sleep(1);

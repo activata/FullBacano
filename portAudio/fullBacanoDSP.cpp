@@ -14,10 +14,14 @@ void FullBacanoDSP::init(){
 }
 
 int FullBacanoDSP::process(float *in, float *out, unsigned long bufferSize){
-   // std::cout << /*  */"Ruido!" << "\n";
-   for(unsigned int i = 0; i < bufferSize; i=i+2) {
-      distortion->process(in[i], out[i]);
-      distortion->process(in[i], out[i+1]);
+   // Como no hacer hard-code de este 2 (numCanales)
+   for(unsigned long i = 0; i < 2*bufferSize; i++) {
+      distortion->process(in, out);
+      out++;
+      in++;
+      distortion->process(in, out);
+      out++;
+      in++;
    }
 
    return 0;

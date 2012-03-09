@@ -8,7 +8,7 @@
 #include "fullBacanoDSP.h"
 using namespace std;
 
-char jackName[] = "Full Bacano";
+char jackName[] = "FullBacano";
 
 // El stream
 PaStream *stream;
@@ -22,8 +22,9 @@ FullBacanoDSP *dsp;
 static int audioCallback( const void* inputBuffer, void *outputBuffer, unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags, void *userData ){
    float* out = (float*)outputBuffer;		
    float* in = (float*)inputBuffer;
-
+   
    return dsp->process(in, out, framesPerBuffer); 
+   return 0;
 }
 //==============//
 //  Init Audio  //
@@ -121,7 +122,7 @@ int main(){
    cout << "Choose your output device: " << endl;
    cin >> outputDevice;
    //initAudio(7,7,48000,256);
-   initAudio(inputDevice,outputDevice,48000,256);
+   initAudio(inputDevice,outputDevice,48000,128);
 
    while(1){
       sleep(1);

@@ -4,6 +4,7 @@
 
 Distortion::Distortion(){
    this->init();
+   this->threshold = 0.3;
 };
 
 Distortion::~Distortion(){
@@ -25,14 +26,16 @@ void Distortion::setThreshold(float threshold){
 //    return 0;
 // }
 
-void Distortion::process(float &in, float &out){
-   if(fabs(in) >= this->threshold){ // podria ser simplemente threshold en lugar de this->threshold
-      if(in > 0){
-         out=1;
+void Distortion::process(float *in, float *out){
+   if(fabs(*in) >= this->threshold){ // podria ser simplemente threshold en lugar de this->threshold
+      if(*in > 0){
+         *out = 1;
       }
       else{
-         out=-1;
+         *out = -1;
       }
    }
-   out = in;
+   else{
+      *out = *in;
+   }
 }

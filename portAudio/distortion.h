@@ -12,5 +12,5 @@ class Distortion{
       ~Distortion();
       void init();
       // int process(float *in, float *out, unsigned long bufferSize);
-      void process(float &in, float &out);
+      void process(float *in, float *out);
 };

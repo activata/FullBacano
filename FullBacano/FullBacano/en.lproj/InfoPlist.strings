@@ -1,0 +1,4 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleName = "FullBacano"; // = "${PRODUCT_NAME}";
+CFBundleGetInfoString ="Activata FullBacano (cc) Creative Commons 2012";
